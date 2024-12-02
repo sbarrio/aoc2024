@@ -1,3 +1,5 @@
+local gfx = playdate.graphics
+
 function readFile(path)
     local file = playdate.file.open(path, playdate.file.kFileRead)
 
@@ -21,4 +23,9 @@ function readFile(path)
     file:close()
 
     return data
+end
+
+function clearScreen()
+	gfx.setColor(gfx.kColorBlack)
+    gfx.fillRect(0, 0, 400, 240)
 end
