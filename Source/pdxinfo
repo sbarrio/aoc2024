@@ -1,0 +1,7 @@
+name=AOC24
+author=sbarrio
+description=Advent of Code 2024
+bundleID=com.sbarrio.aoc24
+version=1.0
+buildNumber=1
+imagePath=SystemAssets
