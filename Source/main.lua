@@ -19,6 +19,7 @@ local gfx = playdate.graphics
 local puzzles = {"1-1", "1-2", "2-1", "2-2", "3-1", "3-2"}
 
 function init()
+    clearScreen(gfx.kColorBlack);
     Message.show({"Please select a puzzle to run:"}, "AOC 24", showChoiceBox)
 end
 
@@ -29,7 +30,6 @@ end
 function choiceSelected(choiceIndex)
     local funcName = "day" .. string.gsub(puzzles[choiceIndex], "-", "_")
     if _G[funcName] then
-        clearScreen()
         playdate.resetElapsedTime()
         _G[funcName](puzzleDone) 
     else

@@ -104,7 +104,6 @@ function Choice.show(title, choices, cols, callback)
     end
 
     if (callback) then
-        print(callback)
         _callback = callback
     end
 
@@ -147,5 +146,4 @@ function Choice.update()
     drawTitle(_title)
     local longestWord = drawChoices(_choiceIndex, _choices)
     drawCursor(_choiceIndex, _cols, longestWord)
-    -- drawScrollIndicators(_choiceIndex, choices) // TO DO
 end
