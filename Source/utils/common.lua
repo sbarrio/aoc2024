@@ -26,6 +26,6 @@ function readFile(path)
 end
 
 function clearScreen()
-	gfx.setColor(gfx.kColorBlack)
+    gfx.setColor(gfx.kColorBlack)
     gfx.fillRect(0, 0, 400, 240)
 end

@@ -14,6 +14,7 @@ import "./utils/common"
 -- Puzzles
 import "day1"
 import "day2"
+import "day3"
 
 local gfx = playdate.graphics
 
