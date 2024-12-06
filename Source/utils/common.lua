@@ -29,3 +29,8 @@ function clearScreen()
     gfx.setColor(gfx.kColorBlack)
     gfx.fillRect(0, 0, 400, 240)
 end
+
+function drawText(text, x, y)
+    gfx.setImageDrawMode(gfx.kDrawModeFillWhite)
+    gfx.drawText(text, x, y)
+end

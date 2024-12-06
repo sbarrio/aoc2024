@@ -15,10 +15,12 @@ import "./utils/common"
 import "day1"
 import "day2"
 import "day3"
+import "day6"
 
 local gfx = playdate.graphics
 
-local puzzles = {"1-1", "1-2", "2-1", "2-2", "3-1", "3-2"}
+local puzzles = {"1-1", "1-2", "2-1", "2-2", "3-1", "3-2", "6-1", "6-2"}
+local dayUpdate = nil
 
 function init()
     clearScreen();
@@ -33,6 +35,7 @@ function choiceSelected(choiceIndex)
     local funcName = "day" .. string.gsub(puzzles[choiceIndex], "-", "_")
     if _G[funcName] then
         playdate.resetElapsedTime()
+        dayUpdate = _G[funcName .. '_update']
         _G[funcName](puzzleDone) 
     else
         Message.show({"That puzzle does not exist yet."}, "Warning", showChoiceBox)
@@ -40,15 +43,19 @@ function choiceSelected(choiceIndex)
 end
 
 function puzzleDone()
+    dayUpdate = nil
     Message.show({"Ran in: " .. playdate.getElapsedTime() .. " seconds"}, "Info", showChoiceBox)
 end
 
 -- Main loop
 function playdate.update()
     clearScreen();
-    gfx.sprite.update()
     Message.update()
     Choice.update() 
+
+    if dayUpdate then
+        dayUpdate()
+    end
 end
 
 -- Start
