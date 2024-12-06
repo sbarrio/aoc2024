@@ -15,7 +15,7 @@ function day6_1(doneCallback)
     -- local path = 'assets/data/day6_example.txt'
     local path = 'assets/data/day6.txt'
     local data = readFile(path)
-    reset(data)
+    reset(data, doneCallback)
 end
 
 function day6_1_update()
@@ -66,8 +66,8 @@ function processStepPart1()
 end
 
 function day6_2(doneCallback)
-  -- local path = 'assets/data/day6_example.txt'
-  local path = 'assets/data/day6.txt'
+  local path = 'assets/data/day6_example.txt'
+  --local path = 'assets/data/day6.txt'
   local data = readFile(path)
   reset(data)
 end
@@ -78,7 +78,7 @@ function day6_2_update()
         return
     end
 
-    processStepPart2)
+    processStepPart2()
 
     drawMap()
 end
@@ -88,7 +88,7 @@ end
 
 
 --- Common
-function reset(data)
+function reset(data, doneCallback)
     gx = 0
     gy = 0
     map = {}

@@ -19,7 +19,7 @@ import "day6"
 
 local gfx = playdate.graphics
 
-local puzzles = {"1-1", "1-2", "2-1", "2-2", "3-1", "3-2", "6-1", "6-2"}
+local puzzles = {"1-1", "1-2", "2-1", "2-2", "3-1", "3-2", "4-1", "4-2", "5-1" ,"5-2", "6-1", "6-2"}
 local dayUpdate = nil
 
 function init()
@@ -38,7 +38,7 @@ function choiceSelected(choiceIndex)
         dayUpdate = _G[funcName .. '_update']
         _G[funcName](puzzleDone) 
     else
-        Message.show({"That puzzle does not exist yet."}, "Warning", showChoiceBox)
+        Message.show({"That puzzle has not been solved yet."}, "Warning", showChoiceBox)
     end
 end
 
