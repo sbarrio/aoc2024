@@ -120,12 +120,12 @@ function isOutOfBounds(x, y, width, height)
 end
 
 function drawMap()
-    local screenW = 200
-    local screenH = 400
-    local charWidth = 15
-    local charHeight = 10
-    local fovX = math.floor(screenW / charWidth - 1)
-    local fovY = math.floor(screenH / charHeight - 1)
+    local screenH = 240
+    local screenW = 400
+    local charHeight = 15
+    local charWidth = 10
+    local fovX = math.floor(screenH / charHeight - 1)
+    local fovY = math.floor(screenW / charWidth - 1)
 
     for i=0, fovX do
         for j=0, fovY do
@@ -133,7 +133,7 @@ function drawMap()
             local sy = gy - math.floor(fovY / 2) + j
             if not isOutOfBounds(sx, sy, #map, #map[1]) then
                 local c = map[sx][sy]
-                drawText(c, j * charHeight, i * charWidth)
+                drawText(c, j * charWidth, i * charHeight)
             end
         end
     end
