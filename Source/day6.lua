@@ -15,39 +15,7 @@ function day6_1(doneCallback)
     -- local path = 'assets/data/day6_example.txt'
     local path = 'assets/data/day6.txt'
     local data = readFile(path)
-
-    gx = 0
-    gy = 0
-    map = {}
-
-    for i, col in ipairs(data) do
-        local row = {}
-
-        for j = 1, #col do
-            row[j] = col:sub(j, j)
-
-            if row[j] == '.' then 
-                row[j] = ' '
-            end
-
-            if row[j] == UP then
-                gx = i
-                gy = j
-            end
-        end
-
-        map[i] = row
-    end
-
-    DIRECTIONS = { 
-        {id = UP, xm = -1, ym = 0},
-        {id = RIGHT, xm = 0, ym = 1},
-        {id = DOWN, xm = 1, ym = 0},
-        {id = LEFT, xm = 0, ym = -1},
-    }
-
-    callback = doneCallback
-    finished = false
+    reset(data)
 end
 
 function day6_1_update()
@@ -56,17 +24,17 @@ function day6_1_update()
         return
     end
 
-    processStep()
+    processStepPart1()
     drawMap()
 end
 
-function done()
+function donePart1()
     finished = true
     local res = countVisited()
     Message.show({"Result is: " .. res}, "Day 6-1", callback) 
 end
 
-function processStep()
+function processStepPart1()
     local turnTimes = 0
     for _, direction in ipairs(DIRECTIONS) do
         local h = #map
@@ -75,7 +43,7 @@ function processStep()
         local nextY = gy + direction.ym
 
         if isOutOfBounds(nextX, nextY, h, w) then
-            done()
+            donePart1()
             break
         end
 
@@ -96,6 +64,64 @@ function processStep()
         turnTimes -= 1
     end
 end
+
+function day6_2(doneCallback)
+  -- local path = 'assets/data/day6_example.txt'
+  local path = 'assets/data/day6.txt'
+  local data = readFile(path)
+  reset(data)
+end
+
+function day6_2_update()
+
+    if finished then
+        return
+    end
+
+    processStepPart2)
+
+    drawMap()
+end
+
+function processStepPart2()
+end
+
+
+--- Common
+function reset(data)
+    gx = 0
+    gy = 0
+    map = {}
+  
+    for i, col in ipairs(data) do
+        local row = {}
+  
+        for j = 1, #col do
+            row[j] = col:sub(j, j)
+  
+            if row[j] == '.' then 
+                row[j] = ' '
+            end
+  
+            if row[j] == UP then
+                gx = i
+                gy = j
+            end
+        end
+  
+        map[i] = row
+    end
+  
+    DIRECTIONS = { 
+        {id = UP, xm = -1, ym = 0},
+        {id = RIGHT, xm = 0, ym = 1},
+        {id = DOWN, xm = 1, ym = 0},
+        {id = LEFT, xm = 0, ym = -1},
+    }
+  
+    callback = doneCallback
+    finished = false
+  end
 
 function turn90()
     local first = table.remove(DIRECTIONS, 1)
@@ -137,16 +163,4 @@ function drawMap()
             end
         end
     end
-end
-
-function day6_2(doneCallback)
-    --local path = 'assets/data/day6_example.txt'
-    local path = 'assets/data/day6.txt'
-    local data = readFile(path)
-
-    local res = 0
-
-    print(res)
-
-    Message.show({"Result is: " .. res}, "Day 6-2", doneCallback)
 end
