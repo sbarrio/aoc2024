@@ -124,13 +124,13 @@ function drawMap()
     local screenW = 400
     local charHeight = 15
     local charWidth = 10
-    local fovX = math.floor(screenH / charHeight - 1)
-    local fovY = math.floor(screenW / charWidth - 1)
+    local fovWidth = math.floor(screenH / charHeight - 1)
+    local fovHeight = math.floor(screenW / charWidth - 1)
 
-    for i=0, fovX do
-        for j=0, fovY do
-            local sx = gx - math.floor(fovX / 2) + i
-            local sy = gy - math.floor(fovY / 2) + j
+    for i=0, fovWidth do
+        for j=0, fovHeight do
+            local sx = gx - math.floor(fovWidth / 2) + i
+            local sy = gy - math.floor(fovHeight / 2) + j
             if not isOutOfBounds(sx, sy, #map, #map[1]) then
                 local c = map[sx][sy]
                 drawText(c, j * charWidth, i * charHeight)
